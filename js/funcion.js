@@ -1,12 +1,30 @@
-var numerosecreto = 90;
+var jugar = prompt('¿Quieres jugar? (s/n)');
 
-var numeroDigitado = prompt("Ingresa un numero entre 1 y 1000");
+if (jugar == 's') {
+  var numeroSecreto = parseInt(Math.random() * 1000) + 1;
+  var intentos = 0; 
+  var numeroDigitado;
+  var maxIntentos = 10;
 
-//SI numero secreto es igual A numero dIGITADO
-if (numerosecreto == numeroDigitado){
-    alert("Acertaste");
-}else if (numerosecreto > numeroDigitado){
-    alert("Te equivocaste el numero secreto es mayor que el numero digitado");
-}else if (numerosecreto < numeroDigitado){
-    alert("Te equivocaste el numero secreto es menor que el numero digitado");
-}
+  console.log(numeroSecreto);
+
+  while (intentos < maxIntentos) {
+    numeroDigitado = prompt('Digite un número entre 1 y 1000. Tienes ' + maxIntentos + ' intentos!');
+    intentos += 1; 
+    var intentosRestantes = maxIntentos - intentos;
+
+    if (numeroDigitado == numeroSecreto) {
+      alert('Enhorabuena! Acertaste en ' + intentos + ' intentos!');
+      break;
+    } else if (numeroDigitado > numeroSecreto) {
+      alert('El número secreto es menor que ' + numeroDigitado + '. Te quedan ' + intentosRestantes + ' intentos.');
+    } else {
+      alert('El número secreto es mayor que ' + numeroDigitado + '. Te quedan ' + intentosRestantes + ' intentos!');
+    }
+  }
+
+  if (intentos == maxIntentos) {
+    alert('Agotaste tus ' + maxIntentos + ' intentos! El número secreto era ' + numeroSecreto);
+  }
+} 
+
